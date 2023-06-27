@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "242674640765",
+    "project_id": "kmart-48f49",
+    "storage_bucket": "kmart-48f49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242674640765:android:853fd873e2e8be88490e14",
+        "android_client_info": {
+          "package_name": "com.moonlight.emart_seller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242674640765-j42obn5pio4tmrpgeishdktjhe5gsul1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moonlight.emart_seller",
+            "certificate_hash": "32d15fdde6e07f149b215c6cfdd26f819072ecc5"
+          }
+        },
+        {
+          "client_id": "242674640765-806tu1c6hn1ran8jrt8m0es9mtamvpne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4A488Zw_wgqjjzJRhKCATfz8xuAG2udM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242674640765-806tu1c6hn1ran8jrt8m0es9mtamvpne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
