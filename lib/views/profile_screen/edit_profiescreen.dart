@@ -1,8 +1,10 @@
 
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_seller/consts/consts.dart';
 import 'package:emart_seller/controllers/profile_controller.dart';
+import 'package:emart_seller/services/store_services.dart';
 import 'package:emart_seller/views/widgets/custom_textfield.dart';
 import 'package:emart_seller/views/widgets/loading_indicator.dart';
 import 'package:emart_seller/views/widgets/text.style.dart';
@@ -10,7 +12,7 @@ import 'package:get/get.dart';
 
 class EditProfileScreen extends StatefulWidget {
   final String? username;
-  const EditProfileScreen({Key? key, this.username}) : super(key: key);
+  const EditProfileScreen({Key? key, required this.username}) : super(key: key);
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -20,8 +22,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   var controller = Get.find<ProfileController>();
 
   @override
-  void initState() {
+  void initState() async{
     controller.nameController.text = widget.username!;
+    //controller.getProfile();
     super.initState();
   }
 
@@ -94,7 +97,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             10.heightBox,
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: white),
-              onPressed: (){},
+              onPressed: (){
+                controller.changeImage(context); //cha--
+              },
               child: normalText(text: changeImage, color: fontGrey),
             ),
             10.heightBox,

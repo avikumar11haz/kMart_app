@@ -101,7 +101,7 @@ class ProductDetails extends StatelessWidget {
                   boldText(text: "Description", color: fontGrey),
 
                   10.heightBox,
-                  normalText(text: "${data['p_desc']}", color: fontGrey),
+                  normalText(text: "${data['p_description']}", color: fontGrey),
 
                 ],
               ),

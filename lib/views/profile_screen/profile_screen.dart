@@ -16,8 +16,10 @@ import 'package:get/get.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+
     var controller = Get.put(ProfileController());
     return Scaffold(
       backgroundColor: purpleColor,
@@ -41,19 +43,19 @@ class ProfileScreen extends StatelessWidget {
         future: StoreServices.getProfile(currentUser!.uid),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
           if(!snapshot.hasData){
-            return loadingIndicator(circleColor: white);
+            return Center(child: loadingIndicator(circleColor: white));
           }else{
             controller.snapshotData = snapshot.data!.docs[0];
-
+            //print(controller.snapshotData);
             return Column(
               children: [
                 ListTile(
                   leading: controller.snapshotData['imageUrl'] == ''
                   ? Image.asset(imgProduct, width: 100, fit: BoxFit.cover,)
                    .box
-            .roundedFull.clip(Clip.antiAlias).make()
-            : Image.network(controller.snapshotData['imageUrl'], width: 100,)
-          .box.roundedFull.clip(Clip.antiAlias).make(),
+                   .roundedFull.clip(Clip.antiAlias).make()
+                   : Image.network(controller.snapshotData['imageUrl'].toString(), width: 100,)
+                      .box.roundedFull.clip(Clip.antiAlias).make(),
 
                   //leading: Image.asset(imgProduct).box.roundedFull.clip(Clip.antiAlias).make(),
                   title: boldText(text: "${controller.snapshotData['vendor_name']}"),
@@ -65,7 +67,8 @@ class ProfileScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: List.generate(
-                  profileButtonsIcons.length,
+                      2,
+                    //profileButtonsIcons.length,
                   (index) => ListTile(
                       onTap: (){
                         switch (index){
@@ -80,7 +83,8 @@ class ProfileScreen extends StatelessWidget {
                       },
                       leading: Icon(profileButtonsIcons[index], color: white,),
                       title: normalText(text: profileButtonsTitles[index]),
-                    )),
+                    )
+                    ),
                   ),
                 ),
               ],

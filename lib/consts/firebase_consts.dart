@@ -10,5 +10,5 @@ User? currentUser = auth.currentUser;
 const vendorCollections = "vendors";
 const productsCollection = "products";
 const chatsCollection = 'chats';
-const messagesCollection = 'messages';
+const messagesCollection = 'messages'; 
 const ordersCollection = 'orders';

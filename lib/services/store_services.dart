@@ -6,7 +6,7 @@ class StoreServices {
   }
 
   static getMessages(uid) {
-    return firestore.collection(chatsCollection).where('told', isEqualTo: uid).snapshots();
+    return firestore.collection(chatsCollection).where('toId', isEqualTo: uid).snapshots();
   }
 
   static getOrders(uid){

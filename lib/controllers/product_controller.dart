@@ -91,7 +91,7 @@ class ProductsController extends GetxController{
       'p_colors': FieldValue.arrayUnion([Colors.red.value, Colors.brown.value]),
       'p_images': FieldValue.arrayUnion(pImagesLinks),
       'p_wishlist': FieldValue.arrayUnion([]),
-      'p_desc': pdescController.text,
+      'p_description': pdescController.text,
       'p_name': pnameController.text,
       'p_price': ppriceController.text,
       'p_quantity': pquantityController.text,
