@@ -88,7 +88,7 @@ class ProductsController extends GetxController{
       'is_featured': false,
       'p_category': categoryvalue.value,
       'p_subcategory': subcategoryvalue.value,
-      'p_colors': FieldValue.arrayUnion([Colors.red.value, Colors.brown.value]),
+      'p_colors': FieldValue.arrayUnion([Colors.red.value, Colors.brown.value, Colors.pink]),
       'p_images': FieldValue.arrayUnion(pImagesLinks),
       'p_wishlist': FieldValue.arrayUnion([]),
       'p_description': pdescController.text,

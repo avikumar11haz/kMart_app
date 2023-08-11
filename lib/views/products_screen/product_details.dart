@@ -1,4 +1,5 @@
 import 'package:emart_seller/consts/consts.dart';
+import 'package:emart_seller/controllers/home_controller.dart';
 import 'package:emart_seller/views/widgets/text.style.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,7 @@ class ProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //print("Receive data in ProductDetails: $data");
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -16,6 +18,7 @@ class ProductDetails extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back, color: darkGrey,)),
         title: boldText(text: "${data['p_name']}", color: fontGrey, size: 16.0),
+
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -71,7 +74,7 @@ class ProductDetails extends StatelessWidget {
                           ),
                           Row(
                             children: List.generate(
-                                3,
+                                data['p_colors'].length,
                                     (index) =>
                                     VxBox().size(40, 40).roundedFull
                                        .color(Color(data['p_colors'][index]))

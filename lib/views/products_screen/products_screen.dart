@@ -47,7 +47,10 @@ class ProductsScreen extends StatelessWidget {
                         onTap: (){
                           Get.to(()=> ProductDetails(data: data[index]));
                         }, //check images
-                        leading: Image.network(data[index]['p_images'][0], width: 100, height: 100, fit: BoxFit.cover,),
+                        //leading: Image.network(data[index]['p_images'][0], width: 100, height: 100, fit: BoxFit.cover,),
+                            leading: data[index]['p_images'] == ''
+                                ? Image.asset(imgProduct, width: 100, height: 100, fit: BoxFit.cover)
+                                : Image.network(data[index]['p_images'][0], width: 100, height: 100, fit: BoxFit.cover),
                         title: boldText(text: "${data[index]['p_name']}", color: fontGrey),
                         subtitle: Row(
                           children: [
@@ -60,7 +63,7 @@ class ProductsScreen extends StatelessWidget {
                           arrowSize: 0.0,
                           menuBuilder: ()=> Column(
                             children: List.generate(
-                                popupMenuTitles.length,
+                                popupMenuTitles.length -1,
                                     (i) => Padding(
                                   padding: const EdgeInsets.all(12.0),
                                   child: Row(

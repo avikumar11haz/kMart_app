@@ -42,10 +42,16 @@ class ProfileScreen extends StatelessWidget {
       body: FutureBuilder(
         future: StoreServices.getProfile(currentUser!.uid),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
-          if(!snapshot.hasData){
+          if(snapshot.connectionState == ConnectionState.waiting){
             return Center(child: loadingIndicator(circleColor: white));
-          }else{
+          }else if(snapshot.hasError){
+            return Center(child: Text('Error: ${snapshot.error}'),);
+          }else if(!snapshot.hasData || snapshot.data!.docs.isEmpty){
+            return Center(child: Text('No Profile data available'),);
+          }
+          else{
             controller.snapshotData = snapshot.data!.docs[0];
+            print("Profile data: ${controller.snapshotData.data()}");
             //print(controller.snapshotData);
             return Column(
               children: [
@@ -67,18 +73,22 @@ class ProfileScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: List.generate(
-                      2,
-                    //profileButtonsIcons.length,
+          // profileButtonsIcons.length > 0 && profileButtonsTitles.length > 0
+          // ? profileButtonsIcons.length
+          //     : 0,
+                    profileButtonsIcons.length,
                   (index) => ListTile(
                       onTap: (){
-                        switch (index){
-                          case 0:
-                            Get.to(()=> const ShopSettings());
-                            break;
-                          case 1:
-                            Get.to(()=> const MessagesScreen());
-                            break;
-                          default:
+                        if(index >= 0 && index < profileButtonsIcons.length){
+                          switch (index){
+                            case 0:
+                              Get.to(()=> const ShopSettings());
+                              break;
+                            case 1:
+                              Get.to(()=> const MessagesScreen());
+                              break;
+                            default:
+                          }
                         }
                       },
                       leading: Icon(profileButtonsIcons[index], color: white,),
